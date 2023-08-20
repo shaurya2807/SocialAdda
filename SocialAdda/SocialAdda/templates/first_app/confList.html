@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends "first_app/start.html" %}
+{% block body_block %}
+<h1>Confessions:</h1>
+<div class="container text-white px-12 ">
+    {% if object_list %}
+    <ol class="table text-white ">
+        {% for conf in object_list %}
+				{% if conf.visible == True %}
+        
+        <a href="{% url 'first_app:postDetail' conf.pk %}">
+          <li class="items-center list-item my-8 rounded-xl border-2 border-separate  text-left px-10 pt-5 pb-20 w-fit max-w-3xl">
+          <h1 class = "text-3xl max-w-max">{{conf.heading}}</h1>
+						<h2 class="mt-3 text-xl text-gray-400 max-w-max">{{conf.text}}</h2>
+        </li></a>
+      
+				{% endif %}
+        {%endfor%}
+    </ol>
+		{%else%}
+    <h1>NO CONFESSIONS</h1>
+    {%endif%}
+</div>
+{%endblock%}
